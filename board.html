@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <title>KanbanFlow — Quadro</title>
+  <link rel="stylesheet" href="board.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+          <rect x="3.5" y="4" width="7" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="13.5" y="4" width="7" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </span>
+      KanbanFlow
+    </div>
+    <div class="topbar-actions">
+      <span class="topbar-note">Organize suas ideias. Faça acontecer.</span>
+      <button class="logout-button" id="logout-button" type="button" aria-label="Sair da conta">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M10 17l5-5-5-5m5 5H3m9-8h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Sair
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Seu espaço de trabalho</p>
+        <h1 id="page-title">Quadro de tarefas</h1>
+        <p class="subtitle">Acompanhe cada etapa do seu trabalho em um só lugar.</p>
+      </div>
+      <button class="primary-button" id="open-modal" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Adicionar Nova Tarefa
+      </button>
+    </section>
+
+    <section class="board" aria-label="Quadro Kanban">
+      <section class="column" data-status="todo" aria-labelledby="todo-heading">
+        <div class="column-heading">
+          <h2 class="column-title" id="todo-heading"><span class="status-dot"></span>A Fazer</h2>
+          <span class="count" aria-label="0 tarefas">0</span>
+        </div>
+        <div class="card-list" data-list="todo" aria-label="Tarefas a fazer"></div>
+      </section>
+      <section class="column" data-status="doing" aria-labelledby="doing-heading">
+        <div class="column-heading">
+          <h2 class="column-title" id="doing-heading"><span class="status-dot"></span>Em Andamento</h2>
+          <span class="count" aria-label="0 tarefas">0</span>
+        </div>
+        <div class="card-list" data-list="doing" aria-label="Tarefas em andamento"></div>
+      </section>
+      <section class="column" data-status="done" aria-labelledby="done-heading">
+        <div class="column-heading">
+          <h2 class="column-title" id="done-heading"><span class="status-dot"></span>Concluído</h2>
+          <span class="count" aria-label="0 tarefas">0</span>
+        </div>
+        <div class="card-list" data-list="done" aria-label="Tarefas concluídas"></div>
+      </section>
+    </section>
+    <p class="board-hint">Arraste os cartões para mudar de etapa ou use o seletor em cada tarefa.</p>
+  </main>
+
+  <dialog id="task-dialog" aria-labelledby="dialog-title">
+    <form class="modal-content" id="task-form">
+      <div class="modal-header">
+        <div>
+          <h2 id="dialog-title">Nova tarefa</h2>
+          <p>Adicione uma atividade ao seu quadro.</p>
+        </div>
+        <button class="icon-button modal-close" id="close-modal" type="button" aria-label="Fechar formulário">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="field">
+        <label for="task-title">Título</label>
+        <input id="task-title" name="title" type="text" maxlength="100" placeholder="Ex.: Preparar apresentação" required>
+      </div>
+      <div class="field">
+        <label for="task-description">Descrição <span class="optional-label">(opcional)</span></label>
+        <textarea id="task-description" name="description" maxlength="500" placeholder="Inclua detalhes importantes sobre esta tarefa..."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button class="secondary-button" id="cancel-modal" type="button">Cancelar</button>
+        <button class="primary-button" type="submit">Criar tarefa</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="board.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6fb">
+  <title>KanbanFlow — Quadros</title>
+  <link rel="stylesheet" href="boards.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./boards.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+          <rect x="3.5" y="4" width="7" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="13.5" y="4" width="7" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </span>
+      KanbanFlow
+    </a>
+    <div class="topbar-actions">
+      <span class="topbar-note">Organize suas ideias. Faça acontecer.</span>
+      <button class="logout-button" id="logout-button" type="button" aria-label="Sair da conta">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M10 17l5-5-5-5m5 5H3m9-8h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Sair
+      </button>
+    </div>
+  </header>
+  <main>
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Seu espaço de trabalho</p>
+        <h1>Seus quadros</h1>
+        <p class="subtitle">Organize projetos e acompanhe o trabalho em equipe.</p>
+      </div>
+      <button class="primary-button" id="new-board" type="button">+ Novo quadro</button>
+    </section>
+    <section class="board-section" aria-labelledby="owned-heading">
+      <h2 id="owned-heading">Meus quadros</h2>
+      <div class="board-grid" id="owned-boards"></div>
+      <p class="empty-state" id="owned-empty" hidden>Você ainda não criou quadros.</p>
+    </section>
+    <section class="board-section" aria-labelledby="shared-heading">
+      <h2 id="shared-heading">Compartilhados comigo</h2>
+      <div class="board-grid" id="shared-boards"></div>
+      <p class="empty-state" id="shared-empty" hidden>Os quadros compartilhados com você aparecerão aqui.</p>
+    </section>
+  </main>
+  <dialog id="new-board-dialog">
+    <form class="modal-content" id="new-board-form">
+      <div class="modal-header">
+        <div>
+          <h2>Novo quadro</h2>
+          <p>Escolha um nome para começar.</p>
+        </div>
+        <button class="icon-button" id="close-new-board" type="button" aria-label="Fechar">×</button>
+      </div>
+      <label class="field">
+        <span>Nome do quadro</span>
+        <input id="board-name" name="name" type="text" maxlength="100" required autofocus>
+      </label>
+      <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+      <div class="modal-actions">
+        <button class="secondary-button" id="cancel-new-board" type="button">Cancelar</button>
+        <button class="primary-button" type="submit">Criar quadro</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="boards.js" defer></script>
+</body>
+</html>
